@@ -59,5 +59,6 @@ public class DZ_2 {
         scanner.close();
 
         //просто комментарий для тренировки GitHub
+        //
     }
 }
