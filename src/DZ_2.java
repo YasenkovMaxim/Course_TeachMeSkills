@@ -57,5 +57,11 @@ public class DZ_2 {
             System.out.println("Введено не целое число");
         }
         scanner.close();
+
+        // Задача для треенировки
+
+        for (int i = 1; i <= 10; i++){
+
+        }
     }
 }
