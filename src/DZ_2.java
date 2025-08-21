@@ -29,6 +29,7 @@ public class DZ_2 {
         for (int i = 10; i <= 20; i++) {
             System.out.print(i * i + " ");
         }
+        // задача решена!
 
         //Задача 4
         System.out.println(" ");
