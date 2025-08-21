@@ -38,6 +38,7 @@ public class DZ_2 {
             System.out.print(num + " ");
             num += 7;
         }
+        // задача решена!!
 
         // Задача*
         Scanner scanner3 = new Scanner(System.in);
