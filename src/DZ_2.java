@@ -58,13 +58,6 @@ public class DZ_2 {
         }
         scanner.close();
 
-        // Задача для тренировки GitHub
-
-        for (int i = 1; i <= 10; i++) {
-            for (int a = 1; a <= 10; a++) {
-                System.out.println(i + " * " + a + " = " + i * a);
-            }
-
-        }
+        //просто комментарий для тренировки GitHub
     }
 }
