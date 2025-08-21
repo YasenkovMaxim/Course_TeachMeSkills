@@ -29,7 +29,6 @@ public class DZ_2 {
         for (int i = 10; i <= 20; i++) {
             System.out.print(i * i + " ");
         }
-        // задача решена!
 
         //Задача 4
         System.out.println(" ");
@@ -38,7 +37,6 @@ public class DZ_2 {
             System.out.print(num + " ");
             num += 7;
         }
-        // задача решена!!
 
         // Задача*
         Scanner scanner3 = new Scanner(System.in);
