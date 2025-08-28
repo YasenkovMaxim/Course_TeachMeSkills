@@ -6,13 +6,14 @@ public class DZ_4 {
         // Задача 1
         //Пройти по массиву, вывести все элементы в прямом и в обратном порядке.
         int[] array = {1, 3, 4, 5, 7, 9};
+        System.out.print("Прямая последовательность: ");
         for (int i = 0; i < array.length; i++) {
             System.out.print(array[i]);
         }
+        System.out.print("\nОбратная последовательность: ");
         for (int i = array.length - 1; i >= 0; i--) {
             System.out.print(array[i]);
         }
-        System.out.println("\n");
 
         // Задача 2
         //Найти минимальный-максимальный элементы и вывести в консоль.
@@ -23,7 +24,7 @@ public class DZ_4 {
             min = Math.min(array2[i], min);
             max = Math.max(array2[i], max);
         }
-        System.out.println("Минимальное число: " + min);
+        System.out.println("\nМинимальное число: " + min);
         System.out.println("Максимальное число: " + max);
 
         // Задача 3
@@ -57,7 +58,7 @@ public class DZ_4 {
         } else if (zero == array4.length) {
             System.out.println("Массив состоит только из нулей");
         } else {
-            System.out.println("Количество нулевый элементов в массиве: " + zero);
+            System.out.println("Количество нулевых элементов в массиве: " + zero);
         }
 
         //Задача 5
@@ -69,7 +70,63 @@ public class DZ_4 {
             array5[i] = array5[array5.length - 1 - i];
             array5[array5.length - 1 - i] = temp;
         }
-        System.out.println("Массив в поменяными числами: " + Arrays.toString(array5));
+        System.out.println("Измененный массив по условиям задачи: " + Arrays.toString(array5));
 
+        //Задача 6
+        //Проверить, является ли массив возрастающей последовательностью (каждое следующее
+        //число больше предыдущего).
+        int[] array6 = {1, 3, 4, 5, 7, 11, 15};
+        int num = 0;
+        for (int i = 0; i < array6.length - 1; i++) {
+            int Index = array6[i + 1];
+            if (array6[i] < Index) {
+                num++;
+            }
+        }
+        if (num == array6.length - 1) {
+            System.out.println("Массив является возрастающей последовательностью.");
+        } else {
+            System.out.println("Массив не является возрастающей последовательностью.");
+        }
+
+        //Имеется массив из неотрицательных чисел(любой). Представьте что массив
+        //представляет целое число (Например массив {1,2,3} -> 123, {9,9,9} -> 999). Задача
+        //добавить единицу к этому “числу” и на выходе получить исправленный массив. Массив не
+        //содержит нуля в начале, кроме самого числа 0.
+        //Пример:
+        //Input: [1,4,0,5,6,3]
+        //Output: [1,4,0,5,6,4]
+        //Input: [9,9,9]
+        //Output: [1,0,0,0]
+
+        int[] array7 = {8, 9, 9, 9};
+        int sum = 0;
+        for (int i = 0; i < array7.length; i++) {
+            if (array7[i] == 9) {
+                sum++;
+            }
+        }
+        if (sum == array7.length) {                        // проверка если массив состоит только из девяток
+            int[] array7new = new int[array7.length + 1];  // создание нового массива
+            Arrays.fill(array7new, 0);
+            array7new[0] = 1;
+            System.out.println(Arrays.toString(array7new));
+            return;                                        // выход чтобы не читал остальные строки кода
+        }
+
+        if (array7[array7.length - 1] != 9) {              // проверка если последнее число массива не девятка
+            array7[array7.length - 1] = array7[array7.length - 1] + 1; // просто добавляем единицу к последнему числу
+        } else {
+            for (int i = array7.length - 1; i >= 0; i--) { // решение если несколько девяток в конце
+                if (array7[i] == 9) {
+                    array7[i] = 0;
+                    if (array7[i - 1] != 9) {
+                        array7[i - 1] = array7[i - 1] + 1;
+                        break;
+                    }
+                }
+            }
+        }
+        System.out.println(Arrays.toString(array7));
     }
 }
