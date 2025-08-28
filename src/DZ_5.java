@@ -1,7 +1,8 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class DZ_5 {
-    public static void DZ_5(String[] args) {
+    public static void main(String[] args) {
 
         //Задача 1:
         //1.1 Создать двумерный массив, заполнить его случайными числами.
@@ -10,15 +11,56 @@ public class DZ_5 {
 
         int[][] deeparray = {{2, 5, 9}, {23, 5, 11}, {31, 9, 10}};
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Введите число, которые прибавится к каждому элементу массива");
+        System.out.println("Введите число, которые прибавится к каждому элементу массива: ");
         int num = scanner.nextInt();
         int sum = 0;
         for (int i = 0; i < deeparray.length; i++) {
             for (int j = 0; j < deeparray[i].length; j++) {
                 deeparray[i][j] = deeparray[i][j] + num;
-                        sum = deeparray[i][j];
+                sum = deeparray[i][j] + sum;
+
             }
         }
         System.out.println("Сумма всех чисел: " + sum);
+
+        //Задача 2:
+        //Создать программу для раскраски шахматной доски с помощью цикла. Создать
+        //двумерный массив String 8х8. С помощью циклов задать элементам массива значения
+        //B(Black) или W(White). При выводе результат работы программы должен быть
+        //teachmeskills.by
+        //следующим:
+        //W B W B W B W B
+        //B W B W B W B W
+        //W B W B W B W B
+        //B W B W B W B W
+        //W B W B W B W B
+        //B W B W B W B W
+        //W B W B W B W B
+        //B W B W B W B W
+        String[][] chess = new String[8][8];
+        String B = "B";
+        String W = "W";
+        for (int i = 0; i < chess.length; i++) {
+            for (int j = 0; j < chess[i].length; j++) {
+                chess[i][j] = B;
+                if (j % 2 == 0 && i % 2 != 0){
+                    chess[i][j] = W;
+                }
+                if  (j % 2 != 0 && i % 2 == 0){
+                    chess[i][j] = W;
+                }
+            }
+            System.out.println(" ");
+            System.out.print(Arrays.toString(chess[i]));
+        }
+
+        //Задача *:
+        //Даны числа n и m. Создайте массив A[n][m] и заполните его змейкой (см. пример).
+        //        Формат входных данных:
+        //Программа получает на вход два числа n и m.
+        //        Формат выходных данных:
+        //Программа должна вывести полученный массив, отводя на вывод каждого числа ровно 3
+        //символа.
+
     }
 }
