@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Random;
 import java.util.Scanner;
 
 public class DZ_5 {
@@ -8,8 +9,15 @@ public class DZ_5 {
         //1.1 Создать двумерный массив, заполнить его случайными числами.
         //1.2 Добавить к каждому значению число, которое пользователь будет вводить с консоли.
         //1.3 Найти сумму всех получившихся элементов и вывести в консоль.
+        Random random = new Random();
+        int[][] deeparray = new int[3][4];
+        for (int i = 0; i < deeparray.length; i++) {
+            for (int j = 0; j < deeparray[i].length; j++) {
+                deeparray[i][j] = random.nextInt(1, 20);
+            }
+        }
+        System.out.println("Массив: " + Arrays.deepToString(deeparray));
 
-        int[][] deeparray = {{2, 5, 9}, {23, 5, 11}, {31, 9, 10}};
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите число, которые прибавится к каждому элементу массива: ");
         int num = scanner.nextInt();
@@ -61,6 +69,5 @@ public class DZ_5 {
         //        Формат выходных данных:
         //Программа должна вывести полученный массив, отводя на вывод каждого числа ровно 3
         //символа.
-
     }
 }
