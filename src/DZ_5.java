@@ -73,4 +73,10 @@ public class DZ_5 {
         }
         scanner.close();
     }
+
+    public static class Result {
+        public static void main(String[] args) {
+
+        }
+    }
 }
