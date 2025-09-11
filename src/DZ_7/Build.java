@@ -6,4 +6,8 @@ public class Build {
     public Build(String type) {
         this.type = type;
     }
+
+    public String getType() {
+        return type;
+    }
 }
