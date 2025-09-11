@@ -1,3 +1,5 @@
+package DZ_4;
+
 import java.util.Arrays;
 
 public class DZ_4 {

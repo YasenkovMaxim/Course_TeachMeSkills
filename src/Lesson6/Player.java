@@ -1,4 +1,4 @@
-package Player;
+package Lesson6;
 
 public class Player {
     int health = 100;

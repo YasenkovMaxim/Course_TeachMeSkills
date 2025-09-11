@@ -1,4 +1,4 @@
-package DZ_7;
+package DZ_7.Task_1;
 
 public class Build {
     String type;
