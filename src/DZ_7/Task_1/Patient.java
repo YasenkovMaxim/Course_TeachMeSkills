@@ -1,27 +1,26 @@
 package DZ_7.Task_1;
 
 public class Patient {
-    int healthPlan;
-    String doctorSpecialization;
-
-    public Patient(int healthPlan, String doctorSpecialization) {
-        this.healthPlan = healthPlan;
-        this.doctorSpecialization = doctorSpecialization;
+    int treatmentPlan;
+    Doctor doctor;
+    public Patient(int treatmentPlan) {
+        this.treatmentPlan = treatmentPlan;
     }
 
-    public int getHealthPlan() {
-        return healthPlan;
+    public int getTreatmentPlan() {
+        return treatmentPlan;
     }
 
-    public void setHealthPlan(int healthPlan) {
-        this.healthPlan = healthPlan;
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
     }
 
-    public String getDoctorSpecialization() {
-        return doctorSpecialization;
-    }
-
-    public void setDoctorSpecialization(String doctorSpecialization) {
-        this.doctorSpecialization = doctorSpecialization;
+    public void treatPatient() {
+        if (doctor != null) {
+            doctor.treat();
+        } else {
+            System.out.println("Такое не лечится");
+        }
     }
 }
+
