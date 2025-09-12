@@ -1,6 +1,6 @@
-package DZ_8.Task_1;
+package DZ_8.Task_hard;
 
- class Animal {
+public class Animal {
     String voice;
 
     public Animal(String voice) {
