@@ -1,22 +1,18 @@
 package DZ_8.Task_hard;
 
 public class Dog extends Animal {
-    private Dog(String voice) {
-        super(voice);
+   private Dog() {
     }
 
-    @Override
-    void voice() {
-        super.voice();
+    static void voice() {
+        System.out.println("Гав-гав");
     }
 
-    @Override
-    void eat(String food) {
-        super.eat(food);
+   static void eat(String food) {
         if (food == "Meat") {
-            System.out.println(this.getClass().getSimpleName() + " любит мясо");
+            System.out.println("Собака любит мясо");
         } else {
-            System.out.println(this.getClass().getSimpleName() + " недоволен, он такое не ест");
+            System.out.println("Собака недовольна, он такое не ест");
         }
     }
 }
