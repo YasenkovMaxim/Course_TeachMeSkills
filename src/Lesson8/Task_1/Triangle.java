@@ -1,6 +1,7 @@
-package Lesson8.Tack_1;
+package Lesson8.Task_1;
 
-public class Square extends Shape {
+public class Triangle extends Shape {
+
     @Override
     void drow() {
         super.drow();
