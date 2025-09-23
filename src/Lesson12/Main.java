@@ -32,5 +32,8 @@ public class Main {
         while (matcher2.find()) {
             System.out.println(matcher2.group());
         }
+
+        String input = "Это     пример    текста";
+        System.out.println(input.trim());
     }
 }
