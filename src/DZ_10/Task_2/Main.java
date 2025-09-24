@@ -16,13 +16,16 @@ public class Main {
         System.out.println("Напишите 0 для поверхностного клонирования или напишите 1 для глубокого клонирования: ");
         int changeClone = scanner.nextInt();
         if (changeClone == 0) {
-            User alex2 = (User) alex.clone();
+            User alex2 = (User) alex.shallowClone();
             System.out.println("Изначальный объект: " + alex);
             System.out.println("Клонированный объект: " + alex2);
         } else if (changeClone == 1) {
-
+            User alex2 = (User) alex.deepClone();
+            System.out.println("Изначальный объект: " + alex);
+            System.out.println("Клонированный объект: " + alex2);
         } else {
             System.out.println("Вы указали неверную цифру");
         }
+
     }
 }

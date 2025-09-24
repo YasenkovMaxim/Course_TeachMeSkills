@@ -16,9 +16,14 @@ public class User implements Cloneable {
         return cat;
     }
 
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
+    protected Object shallowClone() throws CloneNotSupportedException {
         return super.clone();
+    }
+    protected Object deepClone() throws CloneNotSupportedException {
+        User cloneUser = (User) super.clone();
+        Cat cloneCat =(Cat) cloneUser.getCat().clone();
+        cloneUser.setCat(cloneCat);
+        return cloneUser;
     }
 
     public void setCat(Cat cat) {
