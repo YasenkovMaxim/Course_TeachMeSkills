@@ -46,5 +46,6 @@ public class Main {
         while (m4.find()) {
             System.out.println("phone number: " + m4.group());
         }
+        scanner.close();
     }
 }
