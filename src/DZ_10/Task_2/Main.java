@@ -9,7 +9,7 @@ public class Main {
          класса User. Пусть на вход программе будет передаваться тип операции клонирования
          (поверхностное клонирование или глубокое), а также id юзера для клонирования.*/
         User alex = new User();
-        alex.setCat(new Cat("catis", 3));
+        alex.setCat(new Cat("Sharick", 3));
         Scanner scanner = new Scanner(System.in);
         System.out.println("Укажите id пользователя для клонирования: ");
         alex.setUserId(scanner.nextInt());
