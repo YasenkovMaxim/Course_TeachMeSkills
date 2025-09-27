@@ -1,4 +1,4 @@
-package Lesson13;
+package Lesson14;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -38,13 +38,9 @@ public class Practis_2 {
         } catch (IOException e) {
             System.out.println("Exception: " + e);
         }
-        Pattern pattern = Pattern.compile("\\.{1}");
-        Matcher matcher = pattern.matcher(sb);
-        int chars = 0;
-        while (matcher.find()) {
-            chars++;
-        }
-        System.out.println("Количество символов: " + chars);
+        int result = sb.length();
+        System.out.println("Количество символов: " + result);
+
         Pattern pattern2 = Pattern.compile("[a-zA-Z]+");
         Matcher matcher2 = pattern2.matcher(sb);
         int words = 0;

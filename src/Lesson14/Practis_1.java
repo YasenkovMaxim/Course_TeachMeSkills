@@ -1,10 +1,9 @@
-package Lesson13;
+package Lesson14;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 public class Practis_1 {
