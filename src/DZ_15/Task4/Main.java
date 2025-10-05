@@ -28,5 +28,6 @@ public class Main {
         System.out.println(myCollection.get(8));
         myCollection.remove(0);
         myCollection.clear();
+
     }
 }

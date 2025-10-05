@@ -27,7 +27,6 @@ public class MyCollection<T> {
         elements[size] = null;
     }
 
-
     public T get(int index) {
         return (T) elements[index];
     }
