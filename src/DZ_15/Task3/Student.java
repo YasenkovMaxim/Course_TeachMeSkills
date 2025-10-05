@@ -40,7 +40,6 @@ public class Student {
 
     // метод для вычисления среднего балла
     public double getAverageGrade() {
-        if (grades.isEmpty()) return 0;
         double sum = 0;
         for (Double grade : grades) {
             sum += grade;
