@@ -3,58 +3,49 @@ package DZ_15.Task3;
 
 import DZ_13.Task1.Data;
 
+import java.util.List;
+
 public class Student {
     private String name;
-    private int group;
-    private int curse;
-    private int[] grades;
+    private String group;
+    private int course;
+    private List<Double> grades;
 
-    public Student(String name, int group, int curse, int[] grades) {
+    public Student(String name, String group, int course, List<Double> grades) {
         this.name = name;
         this.group = group;
-        this.curse = curse;
+        this.course = course;
         this.grades = grades;
     }
-
-    public double AverageGrade() {
-        double sum = 0;
-        for (int i = 0; i < grades.length; i++) {
-            sum = sum + grades[i];
-        }
-        return sum / grades.length;
-    }
-
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getGroup() {
+    public String getGroup() {
         return group;
     }
 
-    public void setGroup(int group) {
-        this.group = group;
+    public int getCourse() {
+        return course;
     }
 
-    public int getCurse() {
-        return curse;
+    public void setCourse(int course) {
+        this.course = course;
     }
 
-    public void setCurse(int curse) {
-        this.curse = curse;
-    }
-
-    public int[] getGrades() {
+    public List<Double> getGrades() {
         return grades;
     }
 
-    public void setGrades(int[] grades) {
-        this.grades = grades;
+    // метод для вычисления среднего балла
+    public double getAverageGrade() {
+        if (grades.isEmpty()) return 0;
+        double sum = 0;
+        for (Double grade : grades) {
+            sum += grade;
+        }
+        return sum / grades.size();
     }
 }
 

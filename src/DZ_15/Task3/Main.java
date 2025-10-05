@@ -1,25 +1,36 @@
 package DZ_15.Task3;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Iterator;
 
 public class Main {
-    public static void main(String[] args) {
-        // Задача 3:
-        // Создать класс Student, содержащий следующие характеристики – имя, группа, курс,
-        // оценки по предметам. Создать коллекцию, содержащую объекты класса Student.
-        // Написать метод, который удаляет студентов со средним баллом <3. Если средний
-        // балл>=3, студент переводится на следующий курс. Дополнительно написать метод
-        // printStudents(List<Student> students, int course), который получает список студентов и
-        // номер курса. А также печатает на консоль имена тех студентов из списка, которые
-        // обучаются на данном курсе.
-        ArrayList<Student> students = new ArrayList<>();
-        students.add(new Student("Max", 10, 2, new int[]{5, 3, 3, 4, 2}));
-        students.add(new Student("Alex", 13, 3, new int[]{4, 5, 5}));
-        students.add(new Student("Bob", 6, 1, new int[]{5, 1, 4, 5, 4}));
-        students.add(new Student("Ilia", 6, 3, new int[]{5, 3, 4, 3, 2}));
-        students.add(new Student("Lina", 7, 2, new int[]{4, 4, 4, 5, 5}));
-        students.add(new Student("Dasha", 8, 3, new int[]{5, 5, 5, 4}));
-
+    public static void removeStudentsWithLowAverage(List<Student> students) {
+        Iterator<Student> iterator = students.iterator();
+        while (iterator.hasNext()) {
+            Student student = iterator.next();
+            if (student.getAverageGrade() < 3.0) {
+                iterator.remove();
+            } else {
+                student.setCourse(student.getCourse() + 1);
+            }
+        }
     }
-
+    public static void printStudents(List<Student> students, int course) {
+        System.out.println("Студенты на курсе " + course + ":");
+        for (Student student : students) {
+            if (student.getCourse() == course) {
+                System.out.println(student.getName());
+            }
+        }
+    }
+    public static void main(String[] args) {
+        ArrayList<Student> students = new ArrayList<>();
+        students.add(new Student("Ivan", "1", 1, List.of(4.0, 3.5, 4.2)));
+        students.add(new Student("Anna", "1", 1, List.of(2.0, 2.5, 3.0)));
+        students.add(new Student("Max", "2", 2, List.of(3.5, 4.0, 3.8)));
+        students.add(new Student("Olga", "2", 2, List.of(2.0, 2.5, 2.0)));
+        removeStudentsWithLowAverage(students);
+        printStudents(students, 2);
+    }
 }
