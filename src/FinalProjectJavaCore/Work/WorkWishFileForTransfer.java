@@ -1,6 +1,8 @@
 package FinalProjectJavaCore.Work;
 
+import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -35,6 +37,11 @@ public class WorkWishFileForTransfer {
         file = sb.toString();
     }
 
+    public void deleteFile() {
+        File file = new File(search);
+        file.delete();
+    }
+
     public String fromAccountNumber() {
         Pattern pattern = Pattern.compile("\\d{5}[-]\\d{5}");
         Matcher matcher = pattern.matcher(file);
@@ -66,7 +73,11 @@ public class WorkWishFileForTransfer {
         return sum;
     }
 
-    public void addFileInArchive(){
-
+    public void addFileInArchive() {
+        try (FileWriter fileWriter = new FileWriter("archive\\one.txt")) {
+            fileWriter.write(file);
+        } catch (Exception e) {
+            System.out.println("Exception: " + e);
+        }
     }
 }
