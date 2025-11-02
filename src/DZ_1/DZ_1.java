@@ -43,5 +43,6 @@ public class DZ_1 {
         k = k - l;
         System.out.println(k);
         System.out.println(l);
+
     }
 }

@@ -16,7 +16,6 @@ public class Main {
          Метод возвращает true, если значения верны, false в противном случае */
         try {
             System.out.println(Data.valid("2024r444", "jfi9ff", "jfi9ff"));
-
         } catch (WrongLoginException | WrongPasswordException e) {
             System.out.println(e.getMessage());
         }
