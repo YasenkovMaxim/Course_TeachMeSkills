@@ -10,8 +10,17 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class WorkWithInputFile {
+    private static List<Transfer> transfers = new ArrayList<>();
+
+    public static List<Transfer> getTransfers() {
+        return transfers;
+    }
+
+    public static void setTransfers(List<Transfer> transfers) {
+        WorkWithInputFile.transfers = transfers;
+    }
+
     public static List<Transfer> parseFilesFromInput() {
-        List<Transfer> transfers = new ArrayList<>();
         File inputFrom = new File("input");
         File[] files = inputFrom.listFiles((dir, name) -> name.endsWith(".txt"));
         StringBuilder sb = new StringBuilder();
