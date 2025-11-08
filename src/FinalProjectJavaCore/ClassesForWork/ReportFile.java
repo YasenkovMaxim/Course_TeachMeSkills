@@ -13,7 +13,7 @@ public class ReportFile {
             String reportString = dataTransfer + " | " + fileName + " | перевод с " + fromAccount + " на " +
                     toAccount + " " + amount + "BYN успешно обработан";
             System.out.println(reportString);
-            try (FileWriter fw = new FileWriter("reportFile", true)) {
+            try (FileWriter fw = new FileWriter("reportFile.txt", true)) {
                 fw.write(reportString + "\n");
             } catch (IOException e) {
                 System.out.println("Ошибка при записи в файл отчета: " + e.getMessage());

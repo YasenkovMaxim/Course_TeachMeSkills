@@ -10,8 +10,11 @@ public class Main {
         int choice = scanner.nextInt();
         if (choice == 1) {
             Method.one();
+        } else {
+            System.out.println("Введено неверное число");
         }
         if (choice == 2) {
+            Method.one();
             Method.two();
         }
     }
