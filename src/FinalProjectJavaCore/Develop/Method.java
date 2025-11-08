@@ -8,7 +8,7 @@ public class Method {
     public static void one() {
         WorkWithBankDataBase.parseAccount();
         System.out.println(WorkWithInputFile.parseFilesFromInput());
-        //WorkWithInputFile.moveFileFromInputToArchive();
+        WorkWithInputFile.moveFileFromInputToArchive();
         WorkWithBankDataBase.executionTranslation(WorkWithBankDataBase.getCollectionAccountsAndAmount(),
                 WorkWithInputFile.getTransfers());
     }
