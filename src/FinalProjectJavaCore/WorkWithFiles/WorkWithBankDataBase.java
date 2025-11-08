@@ -5,6 +5,7 @@ import FinalProjectJavaCore.ClassesForWork.Transfer;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,7 +13,16 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class WorkWithBankDataBase {
-   private static Map<String, Integer> collectionAccountsAndAmount = new HashMap<>();
+    private static Map<String, Integer> collectionAccountsAndAmount = new HashMap<>();
+    private static String dataTransfer;
+
+    public static String getDataTransfer() {
+        return dataTransfer;
+    }
+
+    public static void setDataTransfer(String dataTransfer) {
+        WorkWithBankDataBase.dataTransfer = dataTransfer;
+    }
 
     public static Map<String, Integer> getCollectionAccountsAndAmount() {
         return collectionAccountsAndAmount;
@@ -43,11 +53,12 @@ public class WorkWithBankDataBase {
         System.out.println(collectionAccountsAndAmount);
     }
 
-    public static void executionTranslation (Map<String, Integer> collectionAccountsAndAmount, List<Transfer> transfers) {
+    public static void executionTranslation(Map<String, Integer> collectionAccountsAndAmount, List<Transfer> transfers) {
         for (Transfer transfer : transfers) {
             String fromAccount = transfer.getAccountFrom();
             String toAccount = transfer.getAccountTo();
             int amount = transfer.getAmount();
+            dataTransfer = LocalDateTime.now().toString();
 
             if (!collectionAccountsAndAmount.containsKey(fromAccount)) {
                 System.out.println("Счет не найден: " + fromAccount);

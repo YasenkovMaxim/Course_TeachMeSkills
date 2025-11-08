@@ -11,6 +11,15 @@ import java.util.regex.Pattern;
 
 public class WorkWithInputFile {
     private static List<Transfer> transfers = new ArrayList<>();
+    private static String fileName;
+
+    public static String getFileName() {
+        return fileName;
+    }
+
+    public static void setFileName(String fileName) {
+        WorkWithInputFile.fileName = fileName;
+    }
 
     public static List<Transfer> getTransfers() {
         return transfers;
@@ -25,6 +34,7 @@ public class WorkWithInputFile {
         File[] files = inputFrom.listFiles((dir, name) -> name.endsWith(".txt"));
         StringBuilder sb = new StringBuilder();
         for (File file : files) {
+            fileName = file.getName();
             try (FileReader fr = new FileReader(file)) {
                 int i = 0;
                 while ((i = fr.read()) != -1) {
