@@ -1,9 +1,11 @@
 package FinalProjectJavaCore.ClassesForWork;
 
 public class Transfer {
-    private String accountFrom;
-    private String accountTo;
-    private int amount;
+    private static String accountFrom;
+    private static String accountTo;
+    private static int amount;
+    private static String status;
+    private static String failureReason;
 
     @Override
     public String toString() {
@@ -11,6 +13,8 @@ public class Transfer {
                 "accountFrom='" + accountFrom + '\'' +
                 ", accountTo='" + accountTo + '\'' +
                 ", amount=" + amount +
+                ", status='" + accountTo + '\'' +
+                ", failureReason='" + accountTo + '\'' +
                 '}';
     }
 
@@ -18,6 +22,24 @@ public class Transfer {
         this.accountFrom = accountFrom;
         this.accountTo = accountTo;
         this.amount = amount;
+        this.status = "не определено";
+        this.failureReason = null;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getFailureReason() {
+        return failureReason;
+    }
+
+    public void setFailureReason(String failureReason) {
+        this.failureReason = failureReason;
     }
 
     public String getAccountFrom() {
@@ -43,4 +65,5 @@ public class Transfer {
     public void setAmount(int amount) {
         this.amount = amount;
     }
+
 }

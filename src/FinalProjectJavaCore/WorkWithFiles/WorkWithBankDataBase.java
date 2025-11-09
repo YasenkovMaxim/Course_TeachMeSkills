@@ -1,7 +1,9 @@
 package FinalProjectJavaCore.WorkWithFiles;
 
+import FinalProjectJavaCore.ClassesForWork.ReportFile;
 import FinalProjectJavaCore.ClassesForWork.Transfer;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -34,15 +36,24 @@ public class WorkWithBankDataBase {
 
     public static void parseAccount() {
         StringBuilder sb = new StringBuilder();
+        File file = new File("BankDataBase.txt");
+        if (!file.exists()) {
+            System.out.println("Файл не найден: ");
+            return;
+        }
         try (FileReader fr = new FileReader("BankDataBase.txt")) {
             int i = 0;
             while ((i = fr.read()) != -1) {
                 sb.append((char) i);
             }
         } catch (Exception e) {
-            System.out.println(e);
+            System.out.println("Ошибка при чтении файла: " + e);
         }
         String accountAndAmount = sb.toString();
+        if (accountAndAmount.isEmpty()) {
+            System.out.println("Файл пуст");
+            return;
+        }
         Pattern pattern = Pattern.compile("(\\d{5}-\\d{5}).+сумма:\\s(\\d+)");
         Matcher matcher = pattern.matcher(accountAndAmount);
         while (matcher.find()) {
@@ -50,35 +61,55 @@ public class WorkWithBankDataBase {
             Integer amount = Integer.parseInt(matcher.group(2));
             collectionAccountsAndAmount.put(account, amount);
         }
-        System.out.println(collectionAccountsAndAmount);
     }
 
-    public static void executionTranslation(Map<String, Integer> collectionAccountsAndAmount, List<Transfer> transfers) {
+    public static void executionTranslation(Map<String, Integer> collectionAccountsAndAmount, List<Transfer> transfers) throws IOException {
         for (Transfer transfer : transfers) {
             String fromAccount = transfer.getAccountFrom();
             String toAccount = transfer.getAccountTo();
             int amount = transfer.getAmount();
+            String status = transfer.getStatus();
+            String faiureReason = transfer.getFailureReason();
             dataTransfer = LocalDateTime.now().toString();
 
             if (!collectionAccountsAndAmount.containsKey(fromAccount)) {
-                System.out.println("Счет не найден: " + fromAccount);
+                faiureReason = "Не найден счет: " + fromAccount;
+                status = "Ошибка";
+                ReportFile.report(dataTransfer, WorkWithInputFile.getFileName(), fromAccount, toAccount, amount,
+                        status, faiureReason);
                 continue;
             }
             if (!collectionAccountsAndAmount.containsKey(toAccount)) {
-                System.out.println("Счет не найден: " + toAccount);
+                faiureReason = "Не найден счет: " + fromAccount;
+                status = "Ошибка";
+                ReportFile.report(dataTransfer, WorkWithInputFile.getFileName(), fromAccount, toAccount, amount,
+                        status, faiureReason);
                 continue;
             }
-
             int fromBalance = collectionAccountsAndAmount.get(fromAccount);
             int toBalance = collectionAccountsAndAmount.get(toAccount);
             if (fromBalance < amount) {
-                System.out.println("Недостаточно средств на счете: " + fromAccount);
+                faiureReason = "Недостаточно средств на счете: " + fromAccount;
+                status = "Ошибка";
+                ReportFile.report(dataTransfer, WorkWithInputFile.getFileName(), fromAccount, toAccount, amount,
+                        status, faiureReason);
+                continue;
+            }
+            if (amount <= 0) {
+                faiureReason = "Отрицательная сумма не может быть переведена ";
+                status = "Ошибка";
+                ReportFile.report(dataTransfer, WorkWithInputFile.getFileName(), fromAccount, toAccount, amount,
+                        status, faiureReason);
                 continue;
             }
             collectionAccountsAndAmount.put(fromAccount, fromBalance - amount);
             collectionAccountsAndAmount.put(toAccount, toBalance + amount);
-        }
 
+            faiureReason = " - ";
+            status = "Успешно ";
+            ReportFile.report(dataTransfer, WorkWithInputFile.getFileName(), fromAccount, toAccount, amount,
+                    status, faiureReason);
+        }
         try (FileWriter fileWriter = new FileWriter("BankDataBase.txt")) {
             int count = 1;
             for (Map.Entry<String, Integer> entry : collectionAccountsAndAmount.entrySet()) {
@@ -89,6 +120,7 @@ public class WorkWithBankDataBase {
         } catch (IOException e) {
             System.out.println("Ошибка при записи в файл: " + e.getMessage());
         }
+
     }
 }
 

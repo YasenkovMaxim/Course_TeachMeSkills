@@ -31,6 +31,10 @@ public class WorkWithInputFile {
 
     public static List<Transfer> parseFilesFromInput() {
         File inputFrom = new File("input");
+        if (!inputFrom.exists()) {
+            System.out.println("Папка пустая");
+            return transfers;
+        }
         File[] files = inputFrom.listFiles((dir, name) -> name.endsWith(".txt"));
         StringBuilder sb = new StringBuilder();
         for (File file : files) {
