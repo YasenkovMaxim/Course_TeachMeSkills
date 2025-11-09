@@ -1,11 +1,11 @@
 package FinalProjectJavaCore.ClassesForWork;
 
 public class Transfer {
-    private static String accountFrom;
-    private static String accountTo;
-    private static int amount;
-    private static String status;
-    private static String failureReason;
+    private String accountFrom;
+    private String accountTo;
+    private int amount;
+    private String status;
+    private String failureReason;
 
     @Override
     public String toString() {
@@ -13,12 +13,12 @@ public class Transfer {
                 "accountFrom='" + accountFrom + '\'' +
                 ", accountTo='" + accountTo + '\'' +
                 ", amount=" + amount +
-                ", status='" + accountTo + '\'' +
-                ", failureReason='" + accountTo + '\'' +
+                ", status='" + status + '\'' +
+                ", failureReason='" + failureReason + '\'' +
                 '}';
     }
 
-    public Transfer(String accountFrom, String accountTo, int amount) {
+    public Transfer(String accountFrom, String accountTo, int amount, String status, String failureReason) {
         this.accountFrom = accountFrom;
         this.accountTo = accountTo;
         this.amount = amount;

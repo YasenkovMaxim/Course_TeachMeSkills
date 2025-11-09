@@ -120,7 +120,7 @@ public class WorkWithBankDataBase {
         } catch (IOException e) {
             System.out.println("Ошибка при записи в файл: " + e.getMessage());
         }
-
     }
+
 }
 

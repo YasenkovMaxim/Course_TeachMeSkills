@@ -5,6 +5,7 @@ import FinalProjectJavaCore.ClassesForWork.Transfer;
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -45,19 +46,23 @@ public class WorkWithInputFile {
                     sb.append((char) i);
                 }
             } catch (Exception e) {
-                System.out.println(e);
+                System.out.println("Ошибка при чтении файла: " + e);
             }
         }
         String inputString = sb.toString();
+        System.out.println(inputString);
         Pattern pattern = Pattern.compile("(\\d{5}-\\d{5})\\s*.*?(\\d{5}-\\d{5})\\s*.*?(\\d+)\\s*BYN", Pattern.DOTALL);
         Matcher matcher = pattern.matcher(inputString);
         while (matcher.find()) {
             String accountFrom = matcher.group(1);
             String accountTo = matcher.group(2);
             int amount = Integer.parseInt(matcher.group(3));
-            Transfer transfer = new Transfer(accountFrom, accountTo, amount);
+            String status = "не определено";
+            String failureReason = null;
+            Transfer transfer = new Transfer(accountFrom, accountTo, amount, status, failureReason);
             transfers.add(transfer);
         }
+        System.out.println(Arrays.toString(transfers.toArray()));
         return transfers;
     }
 
